@@ -5,6 +5,8 @@ import Search from "./Components/Search/Search";
 import { searchCompanies } from "./api";
 import { CompanySearch } from "./company";
 import ListPortfolio from "./Components/Portfolio/ListPortfolio/ListPortfolio";
+import Navbar from "./Components/Navbar/Navbar";
+import Hero from "./Components/Hero/Hero";
 
 function App() {
   const [search, setSearch] = useState<string>("");
@@ -43,6 +45,7 @@ function App() {
   return (
     <div className="App">
       {serverError && <h1>{serverError}</h1>}
+      <Navbar />
       <Search
         onSearchSubmit={onSearchSubmit}
         search={search}
