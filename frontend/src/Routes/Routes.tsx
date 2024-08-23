@@ -5,9 +5,13 @@ import CompanyPage from "../Pages/CompanyPage/CompanyPage";
 import SearchPage from "../Pages/SearchPage/SearchPage";
 import CompanyProfile from "../Components/CompanyProfile/CompanyProfile";
 import IncomeStatement from "../Components/IncomeStatement/IncomeStatement";
-import DesignPage from "../Pages/DesignPage/DesignPage";
+import DesignGuide from "../Pages/DesignGuide/DesignGuide";
 import BalanceSheet from "../Components/BalanceSheet/BalanceSheet";
-import CashFlowStatement from "../Components/CashflowStatement/CashFlowStatement";
+import HistoricalDividend from "../Components/HistoricalDividend/HistoricalDividend";
+import CashflowStatement from "../Components/CashflowStatement/CashflowStatement";
+import LoginPage from "../Pages/LoginPage/LoginPage";
+import RegisterPage from "../Pages/RegisterPage/RegisterPage";
+import ProtectedRoute from "./ProtectedRoute";
 
 export const router = createBrowserRouter([
   {
@@ -15,17 +19,30 @@ export const router = createBrowserRouter([
     element: <App />,
     children: [
       { path: "", element: <HomePage /> },
-      { path: "search", element: <SearchPage /> },
-      { path: "design-guide", element: <DesignPage /> },
-
+      { path: "login", element: <LoginPage /> },
+      { path: "register", element: <RegisterPage /> },
+      {
+        path: "search",
+        element: (
+          <ProtectedRoute>
+            <SearchPage />
+          </ProtectedRoute>
+        ),
+      },
+      { path: "design-guide", element: <DesignGuide /> },
       {
         path: "company/:ticker",
-        element: <CompanyPage />,
+        element: (
+          <ProtectedRoute>
+            <CompanyPage />
+          </ProtectedRoute>
+        ),
         children: [
           { path: "company-profile", element: <CompanyProfile /> },
           { path: "income-statement", element: <IncomeStatement /> },
           { path: "balance-sheet", element: <BalanceSheet /> },
-          { path: "cashflow-statement", element: <CashFlowStatement /> },
+          { path: "cashflow-statement", element: <CashflowStatement /> },
+          { path: "historical-dividend", element: <HistoricalDividend /> },
         ],
       },
     ],

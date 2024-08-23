@@ -1,10 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { CompanyBalanceSheet, CompanyCashFlow } from "../../company";
-import { useOutletContext } from "react-router";
-import { getBalanceSheet } from "../../api";
+import { CompanyBalanceSheet } from "../../company";
+import { useOutletContext } from "react-router-dom";
 import RatioList from "../RatioList/RatioList";
-import Spinner from "../Spinner/Spinner";
-import { formatLargeMonetaryNumber } from "../../Helpers/NumberFormatting";
+import { getBalanceSheet } from "../../api";
+import Table from "../Table/Table";
+import Spinner from "../Spinners/Spinner";
+import {
+  formatLargeMonetaryNumber,
+  formatLargeNonMonetaryNumber,
+} from "../../Helpers/NumberFormatting";
 
 type Props = {};
 

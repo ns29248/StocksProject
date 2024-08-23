@@ -1,8 +1,9 @@
 import React, { SyntheticEvent } from "react";
 import CardPortfolio from "../CardPortfolio/CardPortfolio";
+import { PortfolioGet } from "../../../Models/Portfolio";
 
 interface Props {
-  portfolioValues: string[];
+  portfolioValues: PortfolioGet[];
   onPortfolioDelete: (e: SyntheticEvent) => void;
 }
 
@@ -18,6 +19,7 @@ const ListPortfolio = ({ portfolioValues, onPortfolioDelete }: Props) => {
             portfolioValues.map((portfolioValue) => {
               return (
                 <CardPortfolio
+                  key={portfolioValue.id} // Make sure that `portfolioValue.id` is unique for each portfolio
                   portfolioValue={portfolioValue}
                   onPortfolioDelete={onPortfolioDelete}
                 />

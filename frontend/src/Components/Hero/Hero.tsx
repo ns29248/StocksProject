@@ -1,6 +1,8 @@
 import React from "react";
-import hero from "./hero.png";
 import { Link } from "react-router-dom";
+import hero from "./hero.png";
+import "./Hero.css";
+
 interface Props {}
 
 const Hero = (props: Props) => {
@@ -31,4 +33,5 @@ const Hero = (props: Props) => {
     </section>
   );
 };
+
 export default Hero;
